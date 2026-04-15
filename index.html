@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="listaTelefonica"> <!-- Aqui eu faço a instalação do AngularJS na aplicação e crio o módulo "listaTelefonica" -->
+<head>
+    <title>Lista Telefonica</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> <!-- Importando o Bootstrap via CDN e não local-->
+    
+    <style>
+        .jumbotron {
+            width: 400px;
+            text-align: center;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .table {
+            margin-top: 20px;
+        }
+        .form-control {
+            margin-bottom: 5px;
+        }
+
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> <!-- Importando o AngularJS via CDN e não local-->
+    <script>
+        angular.module("listaTelefonica", []); 
+        angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope) {
+            $scope.app = "Lista Telefonica";
+            $scope.contatos = [
+                {nome: "Maria", telefone: "1234-5678"},
+                {nome: "João", telefone: "9876-5432"},
+                {nome: "Ana", telefone: "5555-5555"}
+            ];
+            $scope.adicionarContato = function() {
+                $scope.contatos.push();
+            }
+        });
+    </script>
+
+</head>
+<body ng-controller="listaTelefonicaCtrl"> <!-- Aqui eu associo o controller a uma parte do HTML. Ligo a lógica (javascript) com a interface (HTML)-->
+    <div class="jumbotron">
+        <h3>{{app}}</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+            </tr>
+            <tr ng-repeat="contato in contatos">   
+                <td>{{contato.nome}}</td>
+                <td>{{contato.telefone}}</td>
+            </tr>
+        </table>
+        <hr/>
+        <input class="form-control" type="text" ng-model="nome"/>
+        <input class="form-control" type="text" ng-model="telefone"/>
+        <button ng-click="adicionarContato()">Adicionar Contato</button> <!-- Aqui eu estou chamando a função "adicionarContato". Isso significa que ela deve estar criada dentro do meu arquivo Script ($scope)-->
+    </div>
+</body>
+</html>
