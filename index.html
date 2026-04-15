@@ -18,22 +18,46 @@
         .form-control {
             margin-bottom: 5px;
         }
-
+        .novoAlinhamento {
+            text-align: left;
+        }
+        .selecionado td {
+            background-color: rgb(255, 254, 167) !important;
+        }
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> <!-- Importando o AngularJS via CDN e não local-->
     <script>
         angular.module("listaTelefonica", []); 
         angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope) {
-            $scope.app = "Lista Telefonica";
+            $scope.app = "LISTA TELEFÔNICA";
             $scope.contatos = [
-                {nome: "Maria", telefone: "1234-5678"},
-                {nome: "João", telefone: "9876-5432"},
-                {nome: "Ana", telefone: "5555-5555"}
+                {nome: "Ademico", telefone: "12345678", cor: "orange"},
+                {nome: "Galileu", telefone: "98765432", cor: "purple"},
+                {nome: "Maneco", telefone: "55555555", cor: "green"}
             ];
-            $scope.adicionarContato = function() {
-                $scope.contatos.push();
-            }
+            $scope.operadoras = [ // Aqui eu criei uma array de operadoras, onde cada operadora é um objeto com as propriedades "nome" e "codigo". Essa array pode ser usada para exibir as operadoras disponíveis ou para associar um contato a uma operadora específica.
+                {nome: "Claro", codigo: 41, categoria: "Celular"},
+                {nome: "Tim", codigo: 171, categoria: "Celular"},
+                {nome: "Vivo", codigo: 777, categoria: "Celular"},
+                {nome: "Claro Home", codigo: 41.1, categoria: "Fixo"},
+                {nome: "Tim Fibra", codigo: 171.1, categoria: "Fixo"},
+                {nome: "Vivo Fibra", codigo: 777.1, categoria: "Fixo"}
+            ];
+            $scope.adicionarContato = function(contato) { // Aqui eu criei uma array de contatos, onde cada contato é um objeto com as propriedades "nome" e "telefone". A função "adicionarContato" recebe um contato como parâmetro, adiciona esse contato à lista de contatos usando o método "push"
+                $scope.contatos.push(angular.copy(contato));
+                delete $scope.contato;
+            };
+            $scope.apagarContatos = function(contatos) {
+                $scope.contatos = contatos.filter(function(contato) {
+                    if (!contato.selecionado) return contato;
+                });
+            };
+            $scope.isContatoSelecionado = function(contatos) {
+                return contatos.some(function (contato) {
+                    return contato.selecionado;
+                });
+            };
         });
     </script>
 
@@ -41,20 +65,41 @@
 <body ng-controller="listaTelefonicaCtrl"> <!-- Aqui eu associo o controller a uma parte do HTML. Ligo a lógica (javascript) com a interface (HTML)-->
     <div class="jumbotron">
         <h3>{{app}}</h3>
-        <table class="table table-striped">
+        <table ng-show="contatos.length > 0" class="table table-striped">
             <tr>
+                <th></th>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>Operadora</th>
+                <th>Categoria</th>
             </tr>
-            <tr ng-repeat="contato in contatos">   
+            <tr class="novoAlinhamento"
+                ng-repeat="contato in contatos"
+                ng-class="{'selecionado negrito': contato.selecionado}">   
+                <td>
+                    <input type="checkbox" ng-model="contato.selecionado"/>
+                </td>
                 <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
+                <td>{{contato.operadora.nome}}</td>
+                <td>{{contato.operadora.categoria}}</td>
+                <td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
             </tr>
         </table>
         <hr/>
-        <input class="form-control" type="text" ng-model="nome"/>
-        <input class="form-control" type="text" ng-model="telefone"/>
-        <button ng-click="adicionarContato()">Adicionar Contato</button> <!-- Aqui eu estou chamando a função "adicionarContato". Isso significa que ela deve estar criada dentro do meu arquivo Script ($scope)-->
+        <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/> <!-- Aqui eu criei a referencia "contato", esse contato será usado para armazenar os dados de nome e telefone. Irei usa-lo na função ng-click e -push dentro do script-->
+        <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+        <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras"> <!-- Aqui eu criei um select que exibe as operadoras disponíveis. Outro ponto, se eu não criar o ng-options, é inutil a utilização do ng-model-->
+            <!-- Entendendo o código "ng-options" acima, eu adicionei o "group by" para grupar as categorias das operadoras em grupos no select -->
+            <option value="">Selecione uma operadora</option>
+        </select>
+        <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button> <!-- Aqui eu estou chamando a função "adicionarContato". Isso significa que ela deve estar criada dentro do meu arquivo Script ($scope)-->
+        <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar Contatos</button>
+        <!-- "||" é o operador lógico "OU" -->
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+    Criado por <strong>Arthur Mendes</strong> <!-- Eu poderia estar puxando esse footer de uma pasta diferente, porém, o browser edge bloqueia buscar documentos de oriens direntes
+                                                Ex.: O site está sendo exibido do index.html, porém o rodapé estava sendo puxado do arquivo footer.html-->
     </div>
 </body>
 </html>
