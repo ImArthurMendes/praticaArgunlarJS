@@ -7,7 +7,7 @@
     
     <style>
         .jumbotron {
-            width: 400px;
+            width: 800px;
             text-align: center;
             margin-top: 20px;
             margin-left: auto;
@@ -35,9 +35,9 @@
         angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope) { //$scope é um objeto que atua como a ponte entre a lógica do JavaScript (controller) e a visualização do HTML (view).
             $scope.app = "LISTA TELEFÔNICA";
             $scope.contatos = [ // Aqui eu criei uma array de contatos, onde cada contato é um objeto com as propriedades nome, telefone e cor.
-                {nome: "Ademico", telefone: "12345678", cor: "orange"},
-                {nome: "Galileu", telefone: "98765432", cor: "purple"},
-                {nome: "Maneco", telefone: "55555555", cor: "green"}
+                {nome: "Ademico", telefone: "12345678", data: new Date()},
+                {nome: "Galileu", telefone: "98765432", data: new Date()},
+                {nome: "Maneco", telefone: "55555555", data: new Date()}
             ];
             $scope.operadoras = [ // Aqui eu criei uma array de operadoras, onde cada operadora é um objeto com as propriedades "nome" e "codigo". Essa array pode ser usada para exibir as operadoras disponíveis ou para associar um contato a uma operadora específica.
                 {nome: "Claro", codigo: 41, categoria: "Celular"},
@@ -77,7 +77,7 @@
                 <th>Telefone</th>
                 <th>Operadora</th>
                 <th>Categoria</th>
-                <th>Cor</th>
+                <th>Data</th>
             </tr>
             <tr class="novoAlinhamento"
                 ng-repeat="contato in contatos"
@@ -89,9 +89,7 @@
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>
                 <td>{{contato.operadora.categoria}}</td>
-                <td>
-                    <div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div>
-                </td>
+                <td style="text-align: center;">{{contato.data | date:'dd/MM/yyyy HH:mm'}}</td>
             </tr>
         </table>
         <hr/>
@@ -104,7 +102,7 @@
             </select>
         </form>
 
-        <div ng-messages="contatoForm.nome.$error" class="alert alert-danger">
+        <div ng-messages="contatoForm.nome.$error" ng-if="contatoForm.nome.$touched && contatoForm.nome.$invalid" class="alert alert-danger">
             <div ng-message="required"> 
                 Por favor, preencha o campo "Nome".
             </div>
@@ -112,7 +110,7 @@
                 O nome deve ter pelo menos 7 caracteres.
             </div>
         </div>
-        <div ng-messages="contatoForm.telefone.$error" class="alert alert-danger">
+        <div ng-messages="contatoForm.telefone.$error" ng-if="contatoForm.telefone.$touched && contatoForm.telefone.$invalid" class="alert alert-danger">
             <div ng-message="required"> 
                 Por favor, preencha o campo "Telefone".
             </div>
@@ -120,7 +118,7 @@
                 O campo "Telefone" deve estar no formato XXXXX-XXXX.
             </div>
         </div>
-        <div ng-messages="contatoForm.operadora.$error" class="alert alert-danger">
+        <div ng-messages="contatoForm.operadora.$error" ng-if="contatoForm.operadora.$touched && contatoForm.operadora.$invalid" class="alert alert-danger">
             <div ng-message="$error">
                 Por favor, selecione uma operadora.
             </div>
