@@ -1,0 +1,21 @@
+<script>
+    var get = function(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                callback(xhr.responseText, xhr.status);
+            }
+        };
+        xhr.open('GET', url);
+        xhr.send(null);
+    };
+
+    function carregar() {
+        get('dados.json', function(data,status) {
+            console.log("Status: ", status);
+            console.log("Data: ", data);
+
+            document.getElementById("ajax").innerText = data;
+        });
+    }
+</script>

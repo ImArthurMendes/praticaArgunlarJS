@@ -1,0 +1,42 @@
+[
+    {
+        "nome": "Joã0",
+        "telefone": "4002-8922",
+        "operadora": {
+            "nome": "Oi",
+            "categoria": "Celular"
+        }
+    },
+    {
+        "nome": "Maria",
+        "telefone": "4002-8922",
+        "operadora": {
+            "nome": "Vivo",
+            "categoria": "Celular"
+        }
+    },
+    {
+        "nome": "Ana",
+        "telefone": "4002-8922",
+        "operadora": {
+            "nome": "Tim",
+            "categoria": "Celular"
+        }
+    },
+    {
+        "nome": "Pedro",
+        "telefone": "4002-8922",
+        "operadora": {
+            "nome": "GVT",
+            "categoria": "Fixo"
+        }
+    },
+    {
+        "nome": "Paulo",
+        "telefone": "4002-8922",
+        "operadora": {
+            "nome": "Embratel",
+            "categoria": "Fixo"
+        }
+    }
+]
