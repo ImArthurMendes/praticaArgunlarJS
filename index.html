@@ -46,8 +46,12 @@
                 {nome: "Vivo Fibra", codigo: 777.1, categoria: "Fixo", preco: 5}
             ];
             $scope.adicionarContato = function(contato) { // Aqui eu criei uma array de contatos, onde cada contato é um objeto com as propriedades "nome" e "telefone". A função "adicionarContato" recebe um contato como parâmetro, adiciona esse contato à lista de contatos usando o método "push"
-                $scope.contatos.push(angular.copy(contato));
-                delete $scope.contato;
+                var novoContato = angular.copy(contato);
+                novoContato.data = new Date();
+                
+                $scope.contatos.push(novoContato);
+                
+                $scope.contato = {}; // Aqui eu limpo o objeto "contato" para que os campos do formulário fiquem em branco após a adição de um contato. Isso é feito atribuindo um objeto vazio ao $scope.contato, o que faz com que os campos do formulário sejam resetados.
                 $scope.contatoForm.$setPristine(); // Aqui eu uso a função $setPristine para limpar o formulário, ou seja, para deixar os campos em branco e remover as mensagens de validação. Essa função é usada para resetar o estado do formulário após a adição de um contato.
                 $scope.contatoForm.$setUntouched(); // Aqui eu uso a função $setUntouched para marcar os campos do formulário como "não tocados". Isso é útil para garantir que as mensagens de validação só sejam exibidas quando o usuário interagir com os campos do formulário, e não imediatamente após a adição de um contato.
             };
@@ -143,3 +147,4 @@
     </div>
 </body>
 </html>
+
