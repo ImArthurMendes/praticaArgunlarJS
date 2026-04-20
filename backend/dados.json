@@ -1,0 +1,46 @@
+[
+  {
+    "nome": "João",
+    "telefone": "4002-8922",
+    "data": "2026-04-20T10:00:00.000Z",
+    "operadora": {
+      "nome": "Oi",
+      "codigo": 14,
+      "categoria": "Celular",
+      "preco": 2
+    }
+  },
+  {
+    "nome": "Arthur Mendes",
+    "telefone": "98482-0551",
+    "operadora": {
+      "nome": "Tim",
+      "codigo": 171,
+      "categoria": "Celular",
+      "preco": 1
+    },
+    "data": "2026-04-20T11:59:51.669Z"
+  },
+  {
+    "nome": "BomDia e CIA",
+    "telefone": "4002-8922",
+    "operadora": {
+      "nome": "Vivo",
+      "codigo": 777,
+      "categoria": "Celular",
+      "preco": 1
+    },
+    "data": "2026-04-20T12:02:27.432Z"
+  },
+  {
+    "nome": "Romildo",
+    "telefone": "99930-7332",
+    "operadora": {
+      "nome": "Tim",
+      "codigo": 171,
+      "categoria": "Celular",
+      "preco": 1
+    },
+    "data": "2026-04-20T12:06:27.315Z"
+  }
+]
