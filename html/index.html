@@ -5,105 +5,13 @@
     <title>Lista Telefônica</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> <!-- Importando o Bootstrap via CDN e não local-->
-
-    <style>
-        .jumbotron {
-            width: 800px;
-            text-align: center;
-            margin: 20px auto;
-        }
-        .table {
-            margin-top: 20px;
-        }
-        .form-control {
-            margin-bottom: 5px;
-        }
-        .selecionado td {
-            background-color: rgb(255, 254, 167) !important;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/app.css"> <!-- Importando o CSS local || O CSS está um nivel acima do arquivo index.html, usar o ".." faz com que suba um nível no diretório e leia o estilo adequadamente -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> <!-- Importando o AngularJS via CDN e não local-->
     <script src="https://code.angular.org/1.8.2/i18n/angular-locale_pt-br.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.min.js"></script> <!-- Importando o AngularJS Messages via CDN e não local, para exibir mensagens de validação de formulário -->
-
-    <script>
-        angular.module("listaTelefonica", ['ngMessages']); // Aqui eu crio o módulo "listaTelefonica" e adiciono a dependência "ngMessages", que é um módulo do AngularJS usado para exibir mensagens de validação de formulário. Ele permite que você mostre mensagens específicas para cada tipo de erro de validação, como campos obrigatórios, padrões de entrada, etc.
-
-        angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $http) { //$scope é um objeto que atua como a ponte entre a lógica do JavaScript (controller) e a visualização do HTML (view).
-
-            $scope.app = "LISTA TELEFÔNICA";
-
-            //Operadoras (necessário para o select)
-            $scope.operadoras = [
-                {nome: "Claro", codigo: 41, categoria: "Celular", preco: 2},
-                {nome: "Tim", codigo: 171, categoria: "Celular", preco: 1},
-                {nome: "Vivo", codigo: 777, categoria: "Celular", preco: 1},
-                {nome: "Claro Home", codigo: 411, categoria: "Fixo", preco: 2},
-                {nome: "Tim Fibra", codigo: 1711, categoria: "Fixo", preco: 3},
-                {nome: "Vivo Fibra", codigo: 7771, categoria: "Fixo", preco: 5}
-            ];
-
-            $scope.contatos = []; // Aqui eu criei uma array de contatos, onde cada contato é um objeto com as propriedades nome, telefone e cor.
-
-            //Carregar dados do JSON
-            $http.get('http://localhost:3000/contatos').then(function(response) { // Aqui eu usei o serviço $http para fazer uma requisição GET para o arquivo "dados.json". O método "then" é usado para lidar com a resposta da requisição. Se a requisição for bem-sucedida, a função de callback será executada, e a resposta será passada como um argumento para essa função.
-                $scope.contatos = response.data; // Aqui eu atribuo os dados obtidos da resposta da requisição à variável $scope.contatos. Isso significa que os contatos obtidos do arquivo "dados.json" serão armazenados na variável $scope.contatos, e essa variável pode ser usada posteriormente para exibir os contatos na interface do usuário.
-                // garante que todos tenham data
-                $scope.contatos.forEach(function(contato) {
-                        contato.data = new Date(contato.data || Date.now());
-                });
-            });
-
-            //Adicionar contato
-            $scope.adicionarContato = function(contato) {
-                var novoContato = angular.copy(contato);
-                novoContato.data = new Date();
-
-                $http.post('http://localhost:3000/contatos', novoContato).then(function() {
-                    $scope.contatos.push(novoContato);
-                }).catch(function(data, status) {
-                    $scope.message = "Aconteceu um problema: " + data;
-                });
-                $scope.contato = {};
-                $scope.contatoForm.$setPristine();
-                $scope.contatoForm.$setUntouched();
-            };
-
-            //Remover contatos
-            $scope.apagarContatos = function(contatos) {
-                $scope.contatos = contatos.filter(function(contato) {
-                    return !contato.selecionado;
-                });
-            };
-
-            $scope.isContatoSelecionado = function(contatos) {
-                return contatos.some(function(contato) {
-                    return contato.selecionado;
-                });
-            };
-
-            $scope.ordenarPor = function(campo) {
-                $scope.criterioDeOrdenacao = campo;
-                $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
-            };
-
-            $scope.exportarJSON = function() {
-                const json = JSON.stringify($scope.contatos, null, 2);
-
-                const blob = new Blob([json], { type: "application/json"});
-                const url = URL.createObjectURL(blob);
-
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = "contatos.json";
-                a.click();
-
-                URL.revokeObjectURL(url);
-            };
-        });
-    </script>
+    <script src="../js/app.js"></script> <!-- Importando o JavaScript local -->
+    <script src="../js/controllers/listaTelefonicaCtrl.js"></script>
 </head>
 
 <body ng-controller="listaTelefonicaCtrl"> <!-- Aqui eu associo o controller a uma parte do HTML. Ligo a lógica (javascript) com a interface (HTML)-->

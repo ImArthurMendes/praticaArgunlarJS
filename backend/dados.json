@@ -42,5 +42,16 @@
       "preco": 1
     },
     "data": "2026-04-20T12:06:27.315Z"
+  },
+  {
+    "nome": "EGS SJP",
+    "telefone": "8482-0551",
+    "operadora": {
+      "nome": "Vivo",
+      "codigo": 777,
+      "categoria": "Celular",
+      "preco": 1
+    },
+    "data": "2026-04-20T13:20:45.418Z"
   }
 ]

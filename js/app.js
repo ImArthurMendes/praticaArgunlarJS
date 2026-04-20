@@ -1,0 +1,1 @@
+angular.module("listaTelefonica", ['ngMessages']); // Aqui eu crio o módulo "listaTelefonica" e adiciono a dependência "ngMessages", que é um módulo do AngularJS usado para exibir mensagens de validação de formulário. Ele permite que você mostre mensagens específicas para cada tipo de erro de validação, como campos obrigatórios, padrões de entrada, etc.
