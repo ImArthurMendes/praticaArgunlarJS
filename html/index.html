@@ -17,6 +17,8 @@
     <script src="../js/services/operadorasAPIService.js"></script> <!-- Importando o arquivo de serviço -->
     <script src="../js/services/serialGeneratorService.js"></script>
     <script src="../js/config/serialGeneratorConfig.js"></script>
+    <script src="../js/filters/nameFilters.js"></script>
+    <script src="../js/filters/ellipsisFilter.js"></script>
     <script src="../js/ajax.js"></script> <!-- Importando o arquivo de ajax -->
 </head>
 
@@ -41,7 +43,7 @@
         <tr ng-repeat="contato in contatos | filter:criterioBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao" ng-class="{'selecionado': contato.selecionado}">
             <td><input type="checkbox" ng-model="contato.selecionado"/></td>
             <td>{{contato.serial}}</td>
-            <td>{{contato.nome}}</td>
+            <td>{{contato.nome | name | ellipsis:15}}</td>
             <td>{{contato.telefone}}</td>
             <td>{{contato.operadora.nome}}</td>
             <td>{{contato.operadora.categoria}}</td>
