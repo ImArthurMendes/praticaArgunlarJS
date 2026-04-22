@@ -11,18 +11,6 @@
         "categoria": "Celular",
         "preco": 2
       }
-    },
-    {
-      "id": 2,
-      "nome": "Arthur Mendes",
-      "telefone": "98482-0551",
-      "operadora": {
-        "nome": "Claro",
-        "codigo": 41,
-        "categoria": "Celular",
-        "preco": 2
-      },
-      "data": "2026-04-22T11:18:11.870Z"
     }
   ],
   "operadoras": [

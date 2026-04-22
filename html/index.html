@@ -11,9 +11,12 @@
     <script src="https://code.angular.org/1.8.2/i18n/angular-locale_pt-br.js"></script> <!-- Importado o locale para pt/br -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.min.js"></script> <!-- Importando o AngularJS Messages via CDN e não local, para exibir mensagens de validação de formulário -->
     <script src="../js/app.js"></script> <!-- Importando o JavaScript local -->
+    <script src="../js/controllers/listaTelefonicaCtrl.js"></script> <!-- Importando o controller e suas funções -->
+    <script src="../value/configValue.js"></script> <!-- Importando o config -->
     <script src="../js/services/contatosAPIService.js"></script> <!-- Importando o arquivo de serviço -->
     <script src="../js/services/operadorasAPIService.js"></script> <!-- Importando o arquivo de serviço -->
-    <script src="../js/controllers/listaTelefonicaCtrl.js"></script> <!-- Importando o controller e suas funções -->
+    <script src="../js/services/serialGeneratorService.js"></script>
+    <script src="../js/config/serialGeneratorConfig.js"></script>
     <script src="../js/ajax.js"></script> <!-- Importando o arquivo de ajax -->
 </head>
 
@@ -27,6 +30,7 @@
 
         <tr>
             <th></th>
+            <th>Serial</th>
             <th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
             <th>Telefone</th>
             <th>Operadora</th>
@@ -36,6 +40,7 @@
 
         <tr ng-repeat="contato in contatos | filter:criterioBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao" ng-class="{'selecionado': contato.selecionado}">
             <td><input type="checkbox" ng-model="contato.selecionado"/></td>
+            <td>{{contato.serial}}</td>
             <td>{{contato.nome}}</td>
             <td>{{contato.telefone}}</td>
             <td>{{contato.operadora.nome}}</td>

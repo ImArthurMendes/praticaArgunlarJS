@@ -1,4 +1,5 @@
-angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $q, contatosAPI, operadorasAPI) {
+angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $q, contatosAPI, operadorasAPI, serialGenerator) {
+    console.log(serialGenerator.generate());
     $scope.app = "LISTA TELEFÔNICA";
     $scope.contatos = [];
     $scope.operadoras = [];
@@ -27,6 +28,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
     carregarOperadoras();
 
     $scope.adicionarContato = function(contato) { //essa função é exposta pelo $scope e a view (html) consegue chama-la. O parâmetro "contato" vem do ng-model do formulário que o usuário preencher no "html". 
+        contato.serial = serialGenerator.generate();
         var novoContato = angular.copy(contato); //essa função foi criada para o angular fazer uma cópia profunda do objeto, evitando que ele seja "sobrecarregado" por uma nova chamada
         novoContato.data = new Date(); //como o formulário não tem campo de data, essa função adiciona a data atual no objeto "novoContato".
 
