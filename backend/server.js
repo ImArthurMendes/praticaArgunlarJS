@@ -15,7 +15,7 @@ const caminhoDados = path.join(__dirname, 'dados.json');
 const lerDados = () => JSON.parse(fs.readFileSync(caminhoDados));
 const salvarDados = (dados) => fs.writeFileSync(caminhoDados, JSON.stringify(dados, null, 2));
 
-//Contatos
+//Ler os contatos salvos
 app.get('/contatos', (req, res) => {
     res.json(lerDados().contatos);
 });
@@ -39,7 +39,7 @@ app.delete('/contatos/:id', (req, res) => {
     res.sendStatus(200);
 });
 
-//Operadoras
+//Ler as operadoras
 app.get('/operadoras', (req, res) => {
     res.json(lerDados().operadoras);
 });
