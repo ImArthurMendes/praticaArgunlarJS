@@ -3,7 +3,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
     $scope.app = "LISTA TELEFÔNICA";
     $scope.contatos = [];
     $scope.operadoras = [];
-
+    
     // variavel criada para carregar os contatos do Service "contatosAPI", se der erro (cacth) ao carregar, mostrar a mensagem "Erro ao carregar contatos."
     var carregarContatos = function() {
         contatosAPI.getContatos().then(function(response) {
@@ -12,7 +12,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
                 contato.data = new Date(contato.data || Date.now());
             });
         }).catch(function() {
-            $scope.message = "Erro ao carregar contatos.";
+            $scope.messageError = "Não foi possível carregar os dados!";
         });
     };
     carregarContatos();
