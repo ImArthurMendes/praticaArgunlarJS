@@ -1,18 +1,6 @@
 {
   "contatos": [
     {
-      "id": 1,
-      "nome": "João da silva",
-      "telefone": "4002-8922",
-      "data": "2026-04-20T10:00:00.000Z",
-      "operadora": {
-        "nome": "Oi",
-        "codigo": 14,
-        "categoria": "Celular",
-        "preco": 2
-      }
-    },
-    {
       "id": 4,
       "nome": "Senha: Zqf0^7E$yud6",
       "telefone": "98482-0551",
@@ -24,19 +12,6 @@
       },
       "serial": "==SS$>=O3R",
       "data": "2026-04-22T19:31:16.305Z"
-    },
-    {
-      "id": 5,
-      "nome": "Arthur Mendes",
-      "telefone": "98482-0551",
-      "operadora": {
-        "nome": "Vivo",
-        "codigo": 777,
-        "categoria": "Celular",
-        "preco": 1
-      },
-      "serial": "!=DT\"I8M'A",
-      "data": "2026-04-23T12:55:25.613Z"
     }
   ],
   "operadoras": [

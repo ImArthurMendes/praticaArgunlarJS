@@ -91,4 +91,19 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
         a.click();
         URL.revokeObjectURL(url); //Libera a URL temporária da memória. Sem isso, o Blod ficaria ocupando memória até a página ser fechada. É o equivalente a limpar o lixo após terminar de usar.
     };
+
+    $scope.accordionItems = [
+    {
+        titulo: "Informação 1",
+        conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat libero. Pellentesque interdum iaculis nulla, pretium commodo quam dictum in. Fusce eu elit vel turpis fermentum lacinia. Nullam erat est, pretium at est sit amet, commodo efficitur ex. Etiam quis nunc sed ante hendrerit malesuada et non nunc. Maecenas a dolor sem. In in nibh finibus, dictum purus non, dapibus nisl. In hac habitasse platea dictumst. Praesent efficitur lorem sed leo facilisis lobortis. Nullam ut nibh semper, feugiat diam ac, feugiat metus. Nunc sit amet pulvinar dolor. Donec risus ante, lacinia vitae felis a, efficitur sagittis lorem. Pellentesque imperdiet, neque et rutrum vulputate, elit dui sollicitudin eros, at maximus ex orci sed ante. Curabitur vitae felis non dolor congue congue sit amet ornare diam. Suspendisse at nibh a mauris convallis rhoncus."
+    },
+    {
+        titulo: "Informação 2",
+        conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat libero. Pellentesque interdum iaculis nulla, pretium commodo quam dictum in. Fusce eu elit vel turpis fermentum lacinia. Nullam erat est, pretium at est sit amet, commodo efficitur ex. Etiam quis nunc sed ante hendrerit malesuada et non nunc. Maecenas a dolor sem. In in nibh finibus, dictum purus non, dapibus nisl. In hac habitasse platea dictumst. Praesent efficitur lorem sed leo facilisis lobortis. Nullam ut nibh semper, feugiat diam ac, feugiat metus. Nunc sit amet pulvinar dolor. Donec risus ante, lacinia vitae felis a, efficitur sagittis lorem. Pellentesque imperdiet, neque et rutrum vulputate, elit dui sollicitudin eros, at maximus ex orci sed ante. Curabitur vitae felis non dolor congue congue sit amet ornare diam. Suspendisse at nibh a mauris convallis rhoncus."
+    },
+    {
+        titulo: "Informação 3",
+        conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat libero. Pellentesque interdum iaculis nulla, pretium commodo quam dictum in. Fusce eu elit vel turpis fermentum lacinia. Nullam erat est, pretium at est sit amet, commodo efficitur ex. Etiam quis nunc sed ante hendrerit malesuada et non nunc. Maecenas a dolor sem. In in nibh finibus, dictum purus non, dapibus nisl. In hac habitasse platea dictumst. Praesent efficitur lorem sed leo facilisis lobortis. Nullam ut nibh semper, feugiat diam ac, feugiat metus. Nunc sit amet pulvinar dolor. Donec risus ante, lacinia vitae felis a, efficitur sagittis lorem. Pellentesque imperdiet, neque et rutrum vulputate, elit dui sollicitudin eros, at maximus ex orci sed ante. Curabitur vitae felis non dolor congue congue sit amet ornare diam. Suspendisse at nibh a mauris convallis rhoncus."
+    }
+    ];
 });

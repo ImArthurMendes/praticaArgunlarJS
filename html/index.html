@@ -16,12 +16,13 @@
     <script src="../value/configValue.js"></script> <!-- Importando o config -->
     <script src="../js/services/contatosAPIService.js"></script> <!-- Importando o arquivo de serviço -->
     <script src="../js/services/operadorasAPIService.js"></script> <!-- Importando o arquivo de serviço -->
-    <script src="../js/services/serialGeneratorService.js"></script>
-    <script src="../js/config/serialGeneratorConfig.js"></script>
-    <script src="../js/filters/nameFilters.js"></script>
-    <script src="../js/filters/ellipsisFilter.js"></script>
-    <script src="../js/directives/uiAlertDirective.js"></script>
-    <script src="../js/directives/uiDateDirective.js"></script>
+    <script src="../js/services/serialGeneratorService.js"></script> <!-- Importando o Gerador de Serial -->
+    <script src="../js/config/serialGeneratorConfig.js"></script> <!-- Importando a configuração do Gerador de Serial -->
+    <script src="../js/filters/nameFilters.js"></script> <!-- Importando os nomes dos filtros -->
+    <script src="../js/filters/ellipsisFilter.js"></script> <!-- Importando o Ellipsis Filter -->
+    <script src="../js/directives/uiAlertDirective.js"></script> <!-- Importando a diretiva uiAlert -->
+    <script src="../js/directives/uiDateDirective.js"></script> <!-- Importando a diretiva uiDate -->
+    <script src="../js/directives/uiAccordionDirective.js"></script> <!-- Importando a diretiva uiAccordion -->
     <script src="../js/ajax.js"></script> <!-- Importando o arquivo de ajax -->
 </head>
 
@@ -37,7 +38,8 @@
             {{messageError}}
         </div>
     </div>
-    
+
+    <div ui-accordion items="accordionItems"></div>
     <input class="form-control" type="text" ng-model="criterioBusca" placeholder="Procurar Contato"/> <!-- Aqui eu criei um input de busca, onde o usuário pode digitar um critério de busca para filtrar os contatos exibidos na tabela. O ng-model "criterioBusca" é usado para armazenar o valor digitado pelo usuário, e esse valor pode ser usado posteriormente para filtrar a lista de contatos exibida na tabela usando o filtro "filter" do AngularJS -->
 
     <table ng-show="contatos.length > 0" class="table table-striped">
@@ -68,7 +70,6 @@
     <form name="contatoForm"> <!-- Esse é o formulário para adicionar novos contatos (nome, telefone, operadora)-->
         <input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="7"/> <!-- Aqui eu criei a referencia "contato", esse contato será usado para armazenar os dados de nome e telefone. Irei usa-lo na função ng-click e -push dentro do script-->
         <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/"/> <!-- A expressão regular "/^\d{4,5}-\d{4}$/" significa: ^ = início da string, \d{4,5} = 4 a 5 dígitos, - = hífen, \d{4} = 4 dígitos, $ = fim da string -->
-        {{contato.data}}
         <input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data" ui-date/>
         <select class="form-control" ng-model="contato.operadora" name="operadora" ng-options="operadora as (operadora.nome + ' - ' + (operadora.preco | currency:'R$ ')) group by operadora.categoria for operadora in operadoras track by operadora.codigo" ng-required="true"> <!-- Aqui eu criei um select que exibe as operadoras disponíveis. Outro ponto, se eu não criar o ng-options, é inutil a utilização do ng-model--><!-- Entendendo o código "ng-options" acima, eu adicionei o "group by" para grupar as categorias das operadoras em grupos no select -->
             <option value="">Selecione uma operadora</option>
