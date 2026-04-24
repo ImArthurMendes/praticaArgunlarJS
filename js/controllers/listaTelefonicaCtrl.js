@@ -94,16 +94,16 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
 
     $scope.accordionItems = [
     {
-        titulo: "Informação 1",
-        conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat libero. Pellentesque interdum iaculis nulla, pretium commodo quam dictum in. Fusce eu elit vel turpis fermentum lacinia. Nullam erat est, pretium at est sit amet, commodo efficitur ex. Etiam quis nunc sed ante hendrerit malesuada et non nunc. Maecenas a dolor sem. In in nibh finibus, dictum purus non, dapibus nisl. In hac habitasse platea dictumst. Praesent efficitur lorem sed leo facilisis lobortis. Nullam ut nibh semper, feugiat diam ac, feugiat metus. Nunc sit amet pulvinar dolor. Donec risus ante, lacinia vitae felis a, efficitur sagittis lorem. Pellentesque imperdiet, neque et rutrum vulputate, elit dui sollicitudin eros, at maximus ex orci sed ante. Curabitur vitae felis non dolor congue congue sit amet ornare diam. Suspendisse at nibh a mauris convallis rhoncus."
+        titulo: "Gerenciamento de Contatos",
+        conteudo: "Cadastre, edite e remova contatos facilmente. Cada registro inclui nome, telefone, operadora e data de criação, garantindo organização e rastreabilidade das informações."
     },
     {
-        titulo: "Informação 2",
-        conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat libero. Pellentesque interdum iaculis nulla, pretium commodo quam dictum in. Fusce eu elit vel turpis fermentum lacinia. Nullam erat est, pretium at est sit amet, commodo efficitur ex. Etiam quis nunc sed ante hendrerit malesuada et non nunc. Maecenas a dolor sem. In in nibh finibus, dictum purus non, dapibus nisl. In hac habitasse platea dictumst. Praesent efficitur lorem sed leo facilisis lobortis. Nullam ut nibh semper, feugiat diam ac, feugiat metus. Nunc sit amet pulvinar dolor. Donec risus ante, lacinia vitae felis a, efficitur sagittis lorem. Pellentesque imperdiet, neque et rutrum vulputate, elit dui sollicitudin eros, at maximus ex orci sed ante. Curabitur vitae felis non dolor congue congue sit amet ornare diam. Suspendisse at nibh a mauris convallis rhoncus."
+        titulo: "Filtros e Ordenação",
+        conteudo: "Utilize a busca dinâmica para localizar contatos rapidamente e ordene por nome ou data. Isso facilita a navegação em listas grandes e melhora a eficiência do usuário."
     },
     {
-        titulo: "Informação 3",
-        conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat libero. Pellentesque interdum iaculis nulla, pretium commodo quam dictum in. Fusce eu elit vel turpis fermentum lacinia. Nullam erat est, pretium at est sit amet, commodo efficitur ex. Etiam quis nunc sed ante hendrerit malesuada et non nunc. Maecenas a dolor sem. In in nibh finibus, dictum purus non, dapibus nisl. In hac habitasse platea dictumst. Praesent efficitur lorem sed leo facilisis lobortis. Nullam ut nibh semper, feugiat diam ac, feugiat metus. Nunc sit amet pulvinar dolor. Donec risus ante, lacinia vitae felis a, efficitur sagittis lorem. Pellentesque imperdiet, neque et rutrum vulputate, elit dui sollicitudin eros, at maximus ex orci sed ante. Curabitur vitae felis non dolor congue congue sit amet ornare diam. Suspendisse at nibh a mauris convallis rhoncus."
+        titulo: "Integração e Exportação",
+        conteudo: "Os dados podem ser integrados com serviços externos via API e exportados em formato JSON. Isso permite backup, migração de dados e interoperabilidade com outros sistemas."
     }
     ];
 });
